@@ -10,6 +10,7 @@
 #        systemctl --user stop sarah-client.service
 #        systemctl --user disable sarah-client.service
 #
+export TERM=xterm
 set -e
 
 # --- Colors & log helpers ---

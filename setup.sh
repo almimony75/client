@@ -12,6 +12,7 @@
 #        systemctl --user daemon-reload
 #        systemctl --user enable --now sarah-client.service
 #
+export TERM=xterm
 set -e
 
 # --- Color Definitions & Log Helpers ---

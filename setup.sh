@@ -85,7 +85,7 @@ else
   info "Downloading Picovoice Porcupine..."
   TMP=$(mktemp -d)
   git clone --quiet --recurse-submodules https://github.com/Picovoice/porcupine.git "$TMP"
-  cp "$TMP"/lib/linux/x_86_64/libpv_porcupine.so ./lib/
+  cp "$TMP"/lib/linux/x86_64/libpv_porcupine.so ./lib/
   cp "$TMP"/lib/common/porcupine_params.pv ./models/
   cp "$TMP"/include/{picovoice.h,pv_porcupine.h} ./include/
   rm -rf "$TMP"

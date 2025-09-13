@@ -1,0 +1,10 @@
+sarah-client
+*.o
+*.so
+*.a
+
+# Logs
+*.log
+
+.vscode
+*.ppn

@@ -93,7 +93,7 @@ else
 fi
 
 info "Compiling Sarah client..."
-g++ src/wakeword.cpp src/main.cpp src/client.cpp src/recorder.cpp src/AppLogger.cpp \
+g++ src/wakeword.cpp src/main.cpp src/client.cpp src/recorder.cpp src/configLoader.cpp src/AppLogger.cpp \
    -I include -O3 -flto \
    -lportaudio \
    -L./lib -Wl,-rpath,'$ORIGIN/lib' -lpv_porcupine \

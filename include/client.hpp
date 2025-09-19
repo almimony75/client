@@ -22,11 +22,10 @@ struct WavHeader
   uint32_t dataSize;
 } __attribute__((packed));
 
-// HttpClient class for posting audio to an orchestrator and handling responses
 class HttpClient
 {
 public:
-  HttpClient(const std::string &host, int port);
+  HttpClient(const std::string &host, int port, const std::string &authToken);
 
   bool postOrch(const std::string &path,
                 const std::vector<int16_t> &audioData,

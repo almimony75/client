@@ -1,21 +1,19 @@
-#include "client.hpp" 
+#include "client.hpp"
 #include "httplib.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
 #include <vector>
 
-
-HttpClient::HttpClient(const std::string &host, int port)
+HttpClient::HttpClient(const std::string &host, int port, const std::string &authToken)
     : cli_(host, port)
 {
-  cli_.set_default_headers({{"X-Auth", "super_secret_token_for_prototype"}});
+  cli_.set_default_headers({{"X-Auth", authToken}});
   cli_.set_connection_timeout(std::chrono::seconds(5));
   cli_.set_read_timeout(std::chrono::seconds(30));
   cli_.set_write_timeout(std::chrono::seconds(30));
 }
 
-// helper function to create WAV data from PCM samples in memory
 std::vector<uint8_t> HttpClient::createWavFromPCM(const std::vector<int16_t> &pcmData,
                                                   int sampleRate, int channels)
 {
@@ -46,7 +44,6 @@ std::vector<uint8_t> HttpClient::getLastResponseAudio() const
   return lastResponseAudio_;
 }
 
-// in memory audio posting method
 bool HttpClient::postOrch(const std::string &path, const std::vector<int16_t> &audioData,
                           int sampleRate, int channels)
 {
@@ -56,11 +53,10 @@ bool HttpClient::postOrch(const std::string &path, const std::vector<int16_t> &a
   std::string wav_content(wavData.begin(), wavData.end());
 
   std::vector<httplib::MultipartFormData> items = {
-      {
-          "file",
-          wav_content,
-          "recording.wav",
-          "audio/wav"}};
+      {"file",
+       wav_content,
+       "recording.wav",
+       "audio/wav"}};
 
   auto res = cli_.Post(path.c_str(), items);
 

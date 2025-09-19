@@ -42,14 +42,8 @@ cd client
 
 ### 2. Configure it
 
-Open `src/main.cpp` and update:
+Configuration is now handled in an external file. Edit `client.conf` in the project's root directory.
 
-- `kOrchestratorHost` → IP or hostname of your server (Tailscale address works)
-    
-- `kPorcupineAccessKey` → your Picovoice key
-    
-- `kPorcupineKeywordPath` → path to your `.ppn` file
-    
 
 ### 3. Build and install
 
